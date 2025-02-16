@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise5</title>
+</head>
+
+<style>
+    #main{
+        border: 1px solid;
+        border-radius: 3px;
+        background-color: #1b0b0b70;
+        width: 50%;
+        max-width: 600px;
+        position: relative;
+        margin: 10px auto;
+        padding: 15px;
+        
+
+    }
+    h2{
+        text-align: center;
+        margin-top: 0;
+    }
+    #value{
+        width: 100%;
+        height: 10vh;
+        outline: none;
+        text-align: center;
+       background-color: white;
+       border-radius: 3px;
+       font-weight: bold;
+       font-size:large ;
+
+
+    }
+    #main_btn{
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        gap: 2vh;
+        margin-top: 3vh;
+        text-align: center;
+        /* border-top: 5px solid; */
+        
+        
+        
+    }
+    #btn
+    {
+        color: white;
+        background-color: black;
+        height: 5vh;
+        border-radius: 5px;
+        cursor: pointer;
+        
+    }
+
+ 
+</style>
+<body>
+   <div id="main">
+    <h2>Simple Calculator</h2>
+
+    <input type="text" id="value">
+    <div id="main_btn">
+    <button  class="value" id="btn">1</button>
+    <button class="value" id="btn">2</button>
+    <button class="value " id="btn">3</button>
+    <button class="value " id="btn">4</button>
+    <button class="value " id="btn">5</button>
+    <button class="value " id="btn">6</button>
+    <button class="value " id="btn">7</button>
+    <button class="value " id="btn">8</button>
+    <button class="value " id="btn">9</button>
+    <button class="value " id="btn">0</button>
+    <button class="operation " id="btn">+</button>
+    <button class="operation " id="btn">-</button>
+    <button class="operation " id="btn">*</button>
+    <button class="operation " id="btn">/</button>
+    <button class="equal" id="btn">=</button>
+    <button class="clear" id="btn">C</button>
+
+   </div>
+   </div>
+
+
+
+
+
+  <script>
+
+    const values = document.querySelectorAll(".value");
+    const show = document.getElementById("value");
+    const oprtion = document.querySelectorAll(".operation");
+    const  equals = document.querySelector(".equal");
+    const  clears = document.querySelector(".clear");
+
+
+    //  take values form 0 to 9 buttion
+function showResult(event)
+{
+
+    show.value += event.target.textContent;
+  
+}
+  // clear the input field
+function clearField()
+{
+    show.value = "";
+}
+  // calculation for input values
+function calculateResult()
+{
+    const newValue = show.value;
+
+    try {
+
+        show.value = eval(newValue);
+       
+        
+    } catch (e)
+     {
+        show.value = "Error";
+    }
+}
+     //all for buttons 0 to 9
+values.forEach((button)=>{
+    button.addEventListener("click",showResult);
+});
+
+   // clear C button to erase value from input
+clears.addEventListener("click",clearField);
+ 
+
+   // all operation button +,-,*,/
+oprtion.forEach((calculation)=>{
+    calculation.addEventListener("click",showResult);
+});
+
+  //  for = to see final result in input field
+equals.addEventListener("click",calculateResult);
+
+
+
+
+
+   
+
+  </script>  
+</body>
+</html>
